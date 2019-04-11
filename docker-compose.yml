@@ -1,0 +1,17 @@
+version: "2"
+services:
+  eabax_zh:
+    image: 114.215.42.138:5000/eabax_zh
+    restart: always
+    container_name: eabax_zh
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: always
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    links:
+      - eabax_zh
+    ports:
+      - "80:80"
