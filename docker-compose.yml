@@ -1,16 +1,13 @@
 version: "2"
 services:
-#  zh_dev:
-#    image: eabax_zh_dev_docker
-#    restart: always
-#    container_name: zh_dev
   nginx:
-    image: nginx:alpine
+#    image: nginx:alpine
     container_name: nginx
+    build:
+      context: docker
     restart: always
     volumes:
       - ./conf.d:/etc/nginx/conf.d
-#    links:
-#      - zh_dev
     ports:
       - 80:80
+      - 443:443
